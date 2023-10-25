@@ -26,9 +26,5 @@ def factorize(num):
                 num = int(val.split('\n')[0])
                 factorize(num)
                 val = file.readline()
-    except FileNotFoundError:
-        print(f"File not Found : {argv}")
-    except ValueError:
-        print(f"Invalid input : {argv")
-    except Exception as e:
+    except:
         pass
