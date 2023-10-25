@@ -1,0 +1,34 @@
+#!/usr/bin/python3
+
+from sys import argv
+
+def factorize(num):
+    a = 2
+
+    if num < 2:
+        return
+    print()
+    print(num, "<- ")
+    while num % a:
+        a += 1
+    print("{:0f}={:.0f}*{:.0f}".format(num, num / a, a))
+    print()
+    print(num, "<- ")
+
+    if len(argv) != 2:
+        exit()
+
+    try:
+        with open(argv[1]) as file:
+            val = file.readline
+
+            while val != "":
+                num = int(val.split('\n')[0])
+                factorize(num)
+                val = file.readline()
+    except FileNotFoundError:
+        print(f"File not Found : {argv}")
+    except ValueError:
+        print(f"Invalid input : {argv")
+    except Exception as e:
+        pass
