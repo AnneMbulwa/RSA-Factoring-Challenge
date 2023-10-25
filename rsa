@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import sys
+
+def factor():
+    try:
+        line = sys.argv[1]
+        with open(line) as file:
+            for num in file:
+                num = int(num)
+                if num % 2 == 0:
+                    print("{}={}*{}".format(num, num // 2, 2))
+                    continue
+                a = 3
+                while a< num // 2:
+                    if num % a == 0:
+                        print("{}={}*{}".format(num, num // a, a))
+                        break
+                    a += 2
+                if a == (num // 2) + 1:
+                    print("{}={}*{}".format(num, num, 1))
+    except (IndexError):
+        pass
+
+factor()
