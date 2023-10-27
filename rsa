@@ -12,7 +12,7 @@ def factor():
                     print("{}={}*{}".format(num, num // 2, 2))
                     continue
                 a = 3
-                while a< num // 2:
+                while a < num // 2:
                     if num % a == 0:
                         print("{}={}*{}".format(num, num // a, a))
                         break
