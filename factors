@@ -1,30 +1,34 @@
 #!/usr/bin/python3
 
-from sys import argv
+import sys
 
-def factorize(num):
-    a = 2
+def factorize(n):
+    for a in range(2, n // 2 + 1):
+        if n % a == 0:
+            return a, n // a
+    return None
 
-    if num < 2:
-        return
-    print()
-    print(num, "<- ")
-    while num % a == 0:
-        a += 1
-    print("{:0f}={:.0f}*{:.0f}".format(num, num / a, a))
-    print()
-    print(num, "<- ")
-
-    if len(argv) != 2:
-        exit()
-
+def main(input_t):
     try:
-        with open(argv[1]) as file:
-            val = file.readline
+        with open(input_t, 'r') as file:
+            for line in file:
+                n = int(line.strip())
+                if n <= 1:
+                    print(f"Invalid input: {n} is not a valid natural number.")
+                else:
+                    factors = factorize(n)
+                    if factors:
+                        p, q = factors
+                        print(f"{n}={p}*{q}")
+                    else:
+                        print(f"No factorization found for {n}")
+    except FileNotFoundError:
+        print(f"Error: File '{input_file}' not found.")
 
-            while val != "":
-                num = int(val.split('\n')[0])
-                factorize(num)
-                val = file.readline()
-    except:
-        pass
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python factors.py <file>")
+    else:
+        input_t = sys.argv[1]
+        main(input_t)
+
